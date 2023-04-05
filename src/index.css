@@ -12,3 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+@font-face {
+  font-family: "nasalization";
+  src: url("./assets/nasalization.otf")
+}
+
+@font-face {
+  font-family: "navine";
+  src: url("./assets/NavineDemo-SemiCondensed.ttf")
+}
