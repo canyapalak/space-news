@@ -9,9 +9,9 @@ export default function Navbar() {
             text-2xl leading-5">SPACE NEWS</p></div></Link>
             <div className="my-auto float-right ml-auto">
                 <ul className="flex flex-row gap-3 md:gap-10 text-lg font-bold items-center h-12">
-                    <li className="hover:text-cyan-400">News</li>
-                    <li className="hover:text-cyan-400">Blogs</li>
-                    <li className="hover:text-cyan-400">Reports</li>
+                    <li className="hover:text-cyan-400 hover:cursor-pointer hover:translate-y-0.5">News</li>
+                    <li className="hover:text-cyan-400 hover:cursor-pointer hover:translate-y-0.5">Blogs</li>
+                    <li className="hover:text-cyan-400 hover:cursor-pointer hover:translate-y-0.5">Reports</li>
                 </ul>
             </div>
         </div>
