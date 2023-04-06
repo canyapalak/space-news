@@ -8,10 +8,16 @@ export default function Navbar() {
             <Link to="/" className="my-auto"><div><p className="text-center font-nasalization 
             text-2xl leading-5">SPACE NEWS</p></div></Link>
             <div className="my-auto float-right ml-auto">
-                <ul className="flex flex-row gap-3 md:gap-10 text-lg font-bold items-center h-12">
-                    <li className="hover:text-cyan-400 hover:cursor-pointer hover:translate-y-0.5">News</li>
-                    <li className="hover:text-cyan-400 hover:cursor-pointer hover:translate-y-0.5">Blogs</li>
-                    <li className="hover:text-cyan-400 hover:cursor-pointer hover:translate-y-0.5">Reports</li>
+                <ul className="flex flex-row gap-3 md:gap-10 text-lg font-bold items-center h-12 tracking-wide">
+                    <Link to="/news">
+                        <li className="hover:text-cyan-400 hover:cursor-pointer hover:translate-y-0.5">News</li>
+                    </Link>
+                    <Link to="/blogs">
+                        <li className="hover:text-cyan-400 hover:cursor-pointer hover:translate-y-0.5">Blogs</li>
+                    </Link>
+                    <Link to="/reports">
+                        <li className="hover:text-cyan-400 hover:cursor-pointer hover:translate-y-0.5">Reports</li>
+                    </Link>
                 </ul>
             </div>
         </div>
