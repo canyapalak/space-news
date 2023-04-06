@@ -50,7 +50,7 @@ export default function Home() {
 
     return (
         <>
-            <div className="text-center mt-20 w-2/3 lg:w-2/6 mx-auto mb-3 md:mb-5 lg:mb-10">
+            <div className="text-center mt-10 w-2/3 lg:w-2/6 mx-auto mb-3 md:mb-5 lg:mb-10">
                 <p className="text-xl font-nasalization mb-1 text-cyan-400">SPACE NEWS</p>
                 <p>Up-to-date news, eye-opening blog posts and detailed reports for those,
                     who want to witness the ground-breaking developments in space activities of humankind. </p>
