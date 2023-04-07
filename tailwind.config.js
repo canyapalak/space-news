@@ -8,7 +8,6 @@ module.exports = {
     extend: {
       fontFamily: {
         nasalization: "nasalization",
-        expressway: "expressway",
         navine: "navine",
       },
     },
