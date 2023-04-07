@@ -22,8 +22,10 @@ const useGetApod = () => {
     try {
       const response = await axios.get(url)
       if (response.data) {
-        setData(response.data)
-        setLoading(false)
+        setTimeout(() => {
+          setData(response.data)
+          setLoading(false)
+        }, 800)
       }
     } catch (error) {
       setError(error)
