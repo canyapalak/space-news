@@ -25,7 +25,7 @@ const useGetApod = () => {
         setTimeout(() => {
           setData(response.data)
           setLoading(false)
-        }, 800)
+        }, 600)
       }
     } catch (error) {
       setError(error)

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react'
 import Modal from '../components/Modal'
+import Loading from '../components/Loading'
 
 export default function NewsPage() {
     const [allNews, setAllNews] = useState<allNewsItem | undefined>()
-
+    const [loading, setLoading] = useState(false)
     const [open, setOpen] = useState(false) //modal logic
     const [urlNewsModal, setUrlNewsModal] = useState<string>('')
 
@@ -30,18 +31,21 @@ export default function NewsPage() {
 
     useEffect(() => {
         const getAllNews = async () => {
+            setLoading(true)
             try {
                 const response = await fetch(
                     'https://api.spaceflightnewsapi.net/v4/articles',
                 )
                 const result = await response.json()
-                setAllNews(result)
+                setTimeout(() => {
+                    setAllNews(result)
+                }, 600)
             } catch (error) {
                 console.error(error)
             }
         }
         getAllNews()
-    }, [])
+    })
 
     console.log('allNews :>> ', allNews)
 
@@ -61,7 +65,7 @@ export default function NewsPage() {
                     NEWS
                 </p>
                 {!allNews ? (
-                    <p className='text-center'>Loading...</p>
+                    <div className='mt-5 mx-auto'><Loading /></div>
                 ) : (
                     <>
                         <p className='text-lg text-center'>{allNews?.count} news found.</p>

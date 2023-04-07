@@ -1,34 +1,44 @@
 import React from 'react'
 import useGetApod from '../hooks/useGetApod'
 import Loading from '../components/Loading'
+import { Link } from 'react-router-dom'
 
 type Props = {}
 
 const NasaApod = (props: Props) => {
   const { data, loading, error } = useGetApod()
+  console.log('data', data)
 
   return (
-    <main className='flex justify-center'>
-      <section className='w-1/2 bg-gradient-to-tr p-5 rounded-lg flex flex-col items-center justify-center'>
-        {loading ? (
-          <Loading />
-        ) : (
-          data && (
+    <main className='flex flex-col justify-center px-4'>
+      <p className='font-nasalization text-center text-cyan-400 text-xl'>
+        PIC OF THE DAY!
+      </p>
+      {loading ? (
+        <div className='mt-5 mx-auto'><Loading /></div>
+      ) : (
+        data && (
+          <section className='mt-5 md:w-2/3 lg:w-1/2 p-5 flex flex-col items-center mx-auto justify-center bg-gradient-to-br
+           from-slate-950 to-slate-700 border-solid border-2
+           border-slate-500 rounded-xl shadow-md hover:shadow-lg hover:shadow-gray-500'>
             <article className='flex flex-col items-center gap-4'>
               <div className='flex justify-around items-baseline'>
-                <h1 className='text-3xl'>{data.title + ' 🚀'}</h1>
-                <p className='text-xl'>{data.date}</p>
+                <h1 className='text-xl'>{data.title + ` 🚀`}</h1>
+                <p className='text-lg ml-1'>{data.date}</p>
               </div>
-              <img
-                src={data.url}
-                alt={data.title}
-                className='h-[350px] rounded-md bg-gray-300 p-3'
-              />
-              <p>{data.explanation}</p>
+              <Link to={data.hdurl} target="_blank">
+                <img
+                  src={data.url}
+                  alt={data.title}
+                  className='h-[150px] md:h-[280] lg:h-[400px] rounded-md bg-slate-500 p-0.5 cursor-pointer'
+                />
+              </Link>
+              <p className='px-2 text-center'>{data.explanation}</p>
             </article>
-          )
-        )}
-      </section>
+          </section>
+        )
+      )}
+
     </main>
   )
 }
