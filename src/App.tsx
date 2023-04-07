@@ -5,6 +5,7 @@ import Home from './views/Home'
 import NewsPage from './views/NewsPage'
 import BlogsPage from './views/BlogsPage'
 import ReportsPage from './views/ReportsPage'
+import NasaApod from './views/NasaApod'
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path='/news' element={<NewsPage />} />
         <Route path='/blogs' element={<BlogsPage />} />
         <Route path='/reports' element={<ReportsPage />} />
+        <Route path='/apod' element={<NasaApod />} />
       </Routes>
     </div>
   )
