@@ -37,31 +37,35 @@ export default function Modal({ open, setOpen, url }: ModalI) {
           from-transparent/20 to-neutral-900'
           onClick={() => setOpen(false)}
         />
-        <div className='fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] w-screen h-full lg:h-[30%] lg:w-[40vw] modal z-20'>
-          <div className='bg-gray-200 w-full h-full flex justify-center items-center rounded-lg relative outline outline-2 outline-sky-200'>
+        <div className='fixed left-[50%] top-[50%] translate-x-[-50%] translate-y-[-50%] 
+        w-screen h-full lg:h-[30%] lg:w-[35vw] modal z-20'>
+          <div className='bg-gray-200 w-full h-full flex justify-center items-center 
+          rounded-lg relative outline outline-2 outline-sky-200'>
             <div className='flex flex-col gap-8'>
               <button
                 onClick={() => setOpen(false)}
-                className='absolute top-5 right-5'
+                className='absolute top-1 right-5'
               >
-                <p className='text-2xl font-bold font-nasalization'>X</p>
+                <p className='text-lg font-bold font-nasalization'>X</p>
               </button>
-              <h2 className='text-2xl text-center font-navine'>
+              <h2 className='text-lg text-center font-navine px-3 mt-5'>
                 You are{' '}
-                <span className='text-green-900 font-semibold'>leaving</span>{' '}
-                space news and you will visit the official news site, continue
+                <span className='text-cyan-700 font-semibold'>leaving</span>{' '}
+                'Space News' to visit the source. Continue
                 to external site?
               </h2>
-              <div className='flex justify-center gap-10 items-center'>
+              <div className='flex justify-center gap-5 items-center mx-3'>
                 <button
                   onClick={() => setOpen(false)}
-                  className='bg-neutral-700 px-10 py-2 hover:shadow-md hover:shadow-red-900 rounded text-lg font-nasalization'
+                  className='bg-stone-400 px-3 py-1 hover:shadow-md hover:shadow-stone-900 rounded 
+                  text-lg font-nasalization'
                 >
                   stay on this site
                 </button>
                 <button
                   onClick={handleClick}
-                  className='bg-green-700 hover:shadow-md hover:shadow-teal-900 px-10 py-2 rounded text-lg font-nasalization'
+                  className='bg-cyan-500 hover:shadow-md hover:shadow-stone-900 px-4 py-1 rounded 
+                  text-lg font-nasalization'
                 >
                   yes, continue
                 </button>

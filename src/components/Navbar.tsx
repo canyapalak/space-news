@@ -19,7 +19,7 @@ export default function Navbar() {
       <div className='my-auto float-right ml-auto'>
         <ul className='flex flex-row gap-2 md:gap-6 font-bold items-center h-12 tracking-wide'>
           <Link to='/apod'>
-            <li className='text-orange-200 hover:text-yellow-300 hover:cursor-pointer hover:translate-y-0.5 leading-4'>
+            <li className='hover:text-orange-200 hover:cursor-pointer hover:translate-y-0.5 leading-4'>
               Pic of the day!
             </li>
           </Link>

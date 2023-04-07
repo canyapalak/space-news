@@ -11,7 +11,7 @@ const NasaApod = (props: Props) => {
 
   return (
     <main className='flex flex-col justify-center px-4'>
-      <p className='font-nasalization text-center text-cyan-400 text-xl'>
+      <p className='font-nasalization text-center text-orange-200 text-xl'>
         PIC OF THE DAY!
       </p>
       {loading ? (
