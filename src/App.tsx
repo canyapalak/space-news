@@ -7,6 +7,8 @@ import BlogsPage from './views/BlogsPage'
 import ReportsPage from './views/ReportsPage'
 import NasaApod from './views/NasaApod'
 import NewsDetailsPage from './views/NewsDetailsPage'
+import BlogsDetailsPage from './views/BlogsDetailsPage'
+import ReportsDetailsPage from './views/ReportsDetailsPage'
 
 function App() {
   return (
@@ -20,7 +22,9 @@ function App() {
         <Route path='/news' element={<NewsPage />} />
         <Route path='/news/:id' element={<NewsDetailsPage />} />
         <Route path='/blogs' element={<BlogsPage />} />
+        <Route path='/blogs/:id' element={<BlogsDetailsPage />} />
         <Route path='/reports' element={<ReportsPage />} />
+        <Route path='/reports/:id' element={<ReportsDetailsPage />} />
         <Route path='/apod' element={<NasaApod />} />
       </Routes>
     </div>
