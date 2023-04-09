@@ -18,7 +18,7 @@ export default function Modal({ open, setOpen, url }: ModalI) {
     return () => {
       document.removeEventListener('keydown', detectKeyDown)
     }
-  }, [])
+  })
 
   if (!open) return null
 

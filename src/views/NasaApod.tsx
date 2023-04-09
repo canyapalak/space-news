@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 type Props = {}
 
 const NasaApod = (props: Props) => {
-  const { data, loading, error } = useGetApod()
+  const { data, loading } = useGetApod()
   // console.log('data', data)
 
   return (
