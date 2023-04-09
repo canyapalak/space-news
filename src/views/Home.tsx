@@ -9,45 +9,6 @@ export default function Home() {
     const Car4 = require('../assets/004.png');
     const Car5 = require('../assets/005.png');
 
-    // const [items, setItems] = React.useState<CarouselItem[]>([
-    //     {
-    //         position: 0,
-    //         el: Car1,
-    //     },
-    //     {
-    //         position: 1,
-    //         el: Car2,
-    //     },
-    //     {
-    //         position: 2,
-    //         el: Car3,
-    //     },
-    //     {
-    //         position: 3,
-    //         el: Car4,
-    //     },
-    // ]);
-
-    // const options: CarouselOptions = {
-    //     defaultPosition: 1,
-    //     interval: 3000,
-
-    //     indicators: {
-    //         activeClasses: 'bg-white dark:bg-gray-800',
-    //         inactiveClasses: 'bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800',
-    //     },
-    //     // callback functions
-    //     onNext: () => {
-    //         console.log('next slider item is shown');
-    //     },
-    //     onPrev: () => {
-    //         console.log('previous slider item is shown');
-    //     },
-    //     onChange: () => {
-    //         console.log('new slider item has been shown');
-    //     }
-    // };
-
     return (
         <>
             <div className="text-center mt-10 w-2/3 lg:w-2/6 mx-auto mb-3 md:mb-5 lg:mb-10">

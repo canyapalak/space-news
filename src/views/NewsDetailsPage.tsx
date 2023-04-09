@@ -6,7 +6,6 @@ import { TbArrowBackUp } from "react-icons/tb"
 
 export default function NewsDetailsPage() {
     const { id } = useParams();
-    const [loading, setLoading] = useState(false)
     const [newsDetails, setNewsDetails] = useState<NewsDetailsItem | undefined>()
     const [open, setOpen] = useState(false) //modal logic
     const [urlNewsModal, setUrlNewsModal] = useState<string>('')
@@ -28,7 +27,6 @@ export default function NewsDetailsPage() {
 
     useEffect(() => {
         const getNewsDetails = async () => {
-            setLoading(true)
             try {
                 const response = await fetch(
                     `https://api.spaceflightnewsapi.net/v4/articles/${id}`,
@@ -42,9 +40,9 @@ export default function NewsDetailsPage() {
             }
         }
         getNewsDetails()
-    }, [])
+    }, [id])
 
-    console.log('newsDetails :>> ', newsDetails);
+    // console.log('newsDetails :>> ', newsDetails);
 
     const handleClick = (newsDetails: NewsDetailsItem) => {
         setOpen(true)
@@ -72,7 +70,7 @@ export default function NewsDetailsPage() {
                         <div className='p-5 w-[20rem] md:w-[32rem] lg:w-[53rem] mt-5 flex flex-col bg-gradient-to-br from-stone-950 to-stone-700 
                     border-solid border-2 border-stone-600 rounded-xlshadow-md items-center rounded-lg gap-3'>
                             <div className="w-[18rem] md:w-[30rem] lg:w-[50rem]">
-                                <img src={newsDetails.image_url} alt="News Image"
+                                <img src={newsDetails.image_url} alt="News"
                                     className="rounded-lg object-cover w-full"
                                 />
                             </div>

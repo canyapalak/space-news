@@ -5,7 +5,6 @@ import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from 'react-icons/bs';
 
 export default function NewsPage() {
     const [allNews, setAllNews] = useState<allNewsItem | undefined>();
-    const [loading, setLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
 
     interface allNewsItem {
@@ -31,7 +30,6 @@ export default function NewsPage() {
 
     useEffect(() => {
         const getAllNews = async () => {
-            setLoading(true);
             try {
                 const response = await fetch(
                     `https://api.spaceflightnewsapi.net/v4/articles/?limit=10&offset=${(currentPage - 1) * 10}`
@@ -43,7 +41,6 @@ export default function NewsPage() {
             } catch (error) {
                 console.error(error);
             } finally {
-                setLoading(false);
             }
         };
         getAllNews();
@@ -63,7 +60,7 @@ export default function NewsPage() {
         }
     };
 
-    console.log('allNews :>> ', allNews)
+    // console.log('allNews :>> ', allNews)
 
     return (
         <main

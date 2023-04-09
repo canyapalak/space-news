@@ -7,7 +7,7 @@ type Props = {}
 
 const NasaApod = (props: Props) => {
   const { data, loading, error } = useGetApod()
-  console.log('data', data)
+  // console.log('data', data)
 
   return (
     <main className='flex flex-col justify-center px-4'>

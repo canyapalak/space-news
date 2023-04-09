@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import Loading from '../components/Loading'
 import { Link } from 'react-router-dom'
+import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from 'react-icons/bs';
 
 export default function BlogsPage() {
     const [allBlogs, setAllBlogs] = useState<allBlogsItem | undefined>()
-    const [loading, setLoading] = useState(false)
+    const [currentPage, setCurrentPage] = useState(1);
     interface allBlogsItem {
         count: number
         next: string | null
@@ -28,10 +29,9 @@ export default function BlogsPage() {
 
     useEffect(() => {
         const getAllBlogs = async () => {
-            setLoading(true);
             try {
                 const response = await fetch(
-                    'https://api.spaceflightnewsapi.net/v4/blogs',
+                    `https://api.spaceflightnewsapi.net/v4/blogs/?limit=10&offset=${(currentPage - 1) * 10}`
                 );
                 const result = await response.json();
                 setTimeout(() => {
@@ -40,13 +40,24 @@ export default function BlogsPage() {
             } catch (error) {
                 console.error(error);
             } finally {
-                setLoading(false);
             }
         };
         getAllBlogs();
-    }, []);
+    }, [currentPage]);
 
-    console.log('allBlogs :>> ', allBlogs)
+    const handlePrevious = () => {
+        if (allBlogs?.previous) {
+            setCurrentPage((prevPage) => prevPage - 1);
+        }
+    };
+
+    const handleNext = () => {
+        if (allBlogs?.next) {
+            setCurrentPage((prevPage) => prevPage + 1);
+        }
+    };
+
+    // console.log('allBlogs :>> ', allBlogs)
 
     return (
         <main
@@ -72,7 +83,7 @@ export default function BlogsPage() {
                                     h-24 md:min-w-[300px] md:w-[300px] md:max-w-[300px] md:h-36 to-zinc-900 rounded-lg'>
                                         <img
                                             src={blog.image_url}
-                                            alt='News'
+                                            alt='Blog'
                                             className='w-full h-full object-cover rounded-lg shadow-md'
                                         ></img>
                                     </div>
@@ -92,6 +103,15 @@ export default function BlogsPage() {
                                     </div>
                                 </article>
                             ))}
+                            <div className='flex flex-row justify-between px-1 mt-3' >
+                                <BsArrowLeftSquareFill
+                                    onClick={handlePrevious}
+                                    className={`w-6 h-6 cursor-pointer hover:translate-y-0.5 hover:text-orange-200 ${allBlogs.previous ? '' : 'opacity-30 cursor-default hover:text-white'}`}
+                                />
+                                <BsArrowRightSquareFill
+                                    onClick={handleNext}
+                                    className={`w-6 h-6 cursor-pointer hover:translate-y-0.5 hover:text-orange-200 ${allBlogs.next ? '' : 'opacity-30 cursor-default hover:text-white'}`}
+                                /></div>
                         </div>
                     </>
                 )}

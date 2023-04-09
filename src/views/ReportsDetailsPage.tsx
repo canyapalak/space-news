@@ -2,12 +2,10 @@ import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Loading from "../components/Loading";
 import Modal from '../components/Modal'
-import { Link } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb"
 
 export default function ReportsDetailsPage() {
     const { id } = useParams();
-    const [loading, setLoading] = useState(false)
     const [reportDetails, setReportDetails] = useState<ReportDetailsItem | undefined>()
     const [open, setOpen] = useState(false) //modal logic
     const [urlNewsModal, setUrlNewsModal] = useState<string>('')
@@ -29,7 +27,6 @@ export default function ReportsDetailsPage() {
 
     useEffect(() => {
         const getReportDetails = async () => {
-            setLoading(true)
             try {
                 const response = await fetch(
                     `https://api.spaceflightnewsapi.net/v4/reports/${id}`,
@@ -43,9 +40,9 @@ export default function ReportsDetailsPage() {
             }
         }
         getReportDetails()
-    }, [])
+    }, [id])
 
-    console.log('reportDetails :>> ', reportDetails);
+    // console.log('reportDetails :>> ', reportDetails);
 
     const handleClick = (reportDetails: ReportDetailsItem) => {
         setOpen(true)
@@ -73,7 +70,7 @@ export default function ReportsDetailsPage() {
                         <div className='p-5 w-[20rem] md:w-[32rem] lg:w-[53rem] mt-5 flex flex-col bg-gradient-to-br from-stone-950 to-stone-700 
                     border-solid border-2 border-stone-600 rounded-xlshadow-md items-center rounded-lg gap-3'>
                             <div className="w-[18rem] md:w-[30rem] lg:w-[50rem]">
-                                <img src={reportDetails.image_url} alt="News Image"
+                                <img src={reportDetails.image_url} alt="Report"
                                     className="rounded-lg object-cover w-full"
                                 />
                             </div>

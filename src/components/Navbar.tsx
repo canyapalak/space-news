@@ -4,10 +4,10 @@ export default function Navbar() {
   return (
     <div
       className='bg-gradient-to-b from-sky-900 to-slate-950 bg-opacity-60 h-12 flex flex-row 
-        px-1 sm:px-10 md:px-30 lg:px-60 mb-10 gap-2'
+        px-1 sm:px-10 md:px-30 lg:px-60 mb-10 gap-2 w-full'
     >
       <Link to='/' className='my-auto'>
-        <div>
+        <div className='my-auto'>
           <p
             className='font-nasalization 
             text-2xl leading-5'
@@ -18,7 +18,7 @@ export default function Navbar() {
       </Link>
       <div className='my-auto float-right ml-auto'>
         <ul className='flex flex-row gap-2 md:gap-6 font-bold items-center h-12 tracking-wide'>
-          <Link to='/apod'>
+          <Link to='/apod' className='w-[4rem] md:w-[7rem]'>
             <li className='hover:text-orange-200 hover:cursor-pointer hover:translate-y-0.5 leading-4'>
               Pic of the day!
             </li>
