@@ -77,7 +77,9 @@ export default function BlogsPage() {
                                         ></img>
                                     </div>
                                     <div className='flex flex-col justify-between mx-auto md:flex-grow md:text-left ml-1'>
-                                        <p className='text-lg text-orange-200'>{blog.title}</p>
+                                        <p className='text-lg text-orange-200'>
+                                            {blog.title.length > 80 ? `${blog.title.substr(0, 70)}...` : blog.title}
+                                        </p>
                                         <p className='mt-3 md:mt-1 '>{blog.summary.substr(0, 90)}...</p>
                                         <Link to={`/blogs/${blog.id}`} className='w-32'>
                                             <div

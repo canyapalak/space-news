@@ -77,7 +77,9 @@ export default function ReportsPage() {
                                         ></img>
                                     </div>
                                     <div className='flex flex-col justify-between mx-auto md:flex-grow md:text-left ml-1'>
-                                        <p className='text-lg text-orange-200'>{report.title}</p>
+                                        <p className='text-lg text-orange-200'>
+                                            {report.title.length > 80 ? `${report.title.substr(0, 70)}...` : report.title}
+                                        </p>
                                         <p className='mt-3 md:mt-1 '>{report.summary.substr(0, 90)}...</p>
                                         <Link to={`/reports/${report.id}`} className='w-32'>
                                             <div

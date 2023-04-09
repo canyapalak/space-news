@@ -77,7 +77,9 @@ export default function NewsPage() {
                                         ></img>
                                     </div>
                                     <div className='flex flex-col justify-between mx-auto md:flex-grow md:text-left ml-1'>
-                                        <p className='text-lg text-orange-200'>{news.title}</p>
+                                        <p className='text-lg text-orange-200'>
+                                            {news.title.length > 80 ? `${news.title.substr(0, 70)}...` : news.title}
+                                        </p>
                                         <p className='mt-3 md:mt-1 '>{news.summary.substr(0, 90)}...</p>
                                         <Link to={`/news/${news.id}`} className='w-32'>
                                             <div
