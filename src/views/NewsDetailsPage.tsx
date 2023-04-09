@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import Loading from "../components/Loading";
 import Modal from '../components/Modal'
-import { Link } from "react-router-dom";
 import { TbArrowBackUp } from "react-icons/tb"
 
 export default function NewsDetailsPage() {
@@ -11,6 +10,7 @@ export default function NewsDetailsPage() {
     const [newsDetails, setNewsDetails] = useState<NewsDetailsItem | undefined>()
     const [open, setOpen] = useState(false) //modal logic
     const [urlNewsModal, setUrlNewsModal] = useState<string>('')
+    const navigate = useNavigate();
 
     interface NewsDetailsItem {
         id: number
@@ -51,6 +51,10 @@ export default function NewsDetailsPage() {
         setUrlNewsModal(newsDetails.url)
     }
 
+    const handleGoBack = () => {
+        navigate(-1);
+    };
+
     return (
         <main
             className={`${open ? 'blur-sm' : 'blur-0'} flex flex-col justify-center items-center px-5 pb-10`}
@@ -64,7 +68,7 @@ export default function NewsDetailsPage() {
                     <div className='mt-5 mx-auto items-center'><Loading /></div>
                 ) : (
                     <div>
-                        <Link to="/news"><TbArrowBackUp className="cursor-pointer w-6 h-6 inline-block" /></Link>
+                        <TbArrowBackUp onClick={handleGoBack} className="cursor-pointer w-6 h-6 inline-block hover:translate-y-0.5" />
                         <div className='p-5 w-[20rem] md:w-[32rem] lg:w-[53rem] mt-5 flex flex-col bg-gradient-to-br from-stone-950 to-stone-700 
                     border-solid border-2 border-stone-600 rounded-xlshadow-md items-center rounded-lg gap-3'>
                             <div className="w-[18rem] md:w-[30rem] lg:w-[50rem]">

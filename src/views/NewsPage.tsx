@@ -1,29 +1,32 @@
-import { useEffect, useState } from 'react'
-import Loading from '../components/Loading'
-import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import Loading from '../components/Loading';
+import { Link } from 'react-router-dom';
+import { BsArrowRightSquareFill, BsArrowLeftSquareFill } from 'react-icons/bs';
 
 export default function NewsPage() {
-    const [allNews, setAllNews] = useState<allNewsItem | undefined>()
-    const [loading, setLoading] = useState(false)
+    const [allNews, setAllNews] = useState<allNewsItem | undefined>();
+    const [loading, setLoading] = useState(false);
+    const [currentPage, setCurrentPage] = useState(1);
+
     interface allNewsItem {
-        count: number
-        next: string | null
-        previous: string | null
-        results: NewsItem[]
+        count: number;
+        next: string | null;
+        previous: string | null;
+        results: NewsItem[];
     }
 
     interface NewsItem {
-        id: number
-        title: string
-        url: string
-        image_url: string
-        news_site: string
-        summary: string
-        published_at: string
-        updated_at: string
-        featured: boolean
-        launches: []
-        events: []
+        id: number;
+        title: string;
+        url: string;
+        image_url: string;
+        news_site: string;
+        summary: string;
+        published_at: string;
+        updated_at: string;
+        featured: boolean;
+        launches: [];
+        events: [];
     }
 
     useEffect(() => {
@@ -31,7 +34,7 @@ export default function NewsPage() {
             setLoading(true);
             try {
                 const response = await fetch(
-                    'https://api.spaceflightnewsapi.net/v4/articles',
+                    `https://api.spaceflightnewsapi.net/v4/articles/?limit=10&offset=${(currentPage - 1) * 10}`
                 );
                 const result = await response.json();
                 setTimeout(() => {
@@ -44,7 +47,21 @@ export default function NewsPage() {
             }
         };
         getAllNews();
-    }, []);
+    }, [currentPage]);
+
+    console.log('allNews :>> ', allNews);
+
+    const handlePrevious = () => {
+        if (allNews?.previous) {
+            setCurrentPage((prevPage) => prevPage - 1);
+        }
+    };
+
+    const handleNext = () => {
+        if (allNews?.next) {
+            setCurrentPage((prevPage) => prevPage + 1);
+        }
+    };
 
     console.log('allNews :>> ', allNews)
 
@@ -92,6 +109,15 @@ export default function NewsPage() {
                                     </div>
                                 </article>
                             ))}
+                            <div className='flex flex-row justify-between px-1 mt-3' >
+                                <BsArrowLeftSquareFill
+                                    onClick={handlePrevious}
+                                    className={`w-6 h-6 cursor-pointer hover:translate-y-0.5 hover:text-orange-200 ${allNews.previous ? '' : 'opacity-30 cursor-default hover:text-white'}`}
+                                />
+                                <BsArrowRightSquareFill
+                                    onClick={handleNext}
+                                    className={`w-6 h-6 cursor-pointer hover:translate-y-0.5 hover:text-orange-200 ${allNews.next ? '' : 'opacity-30 cursor-default hover:text-white'}`}
+                                /></div>
                         </div>
                     </>
                 )}
